@@ -19,9 +19,10 @@ def digits(value):
 
 
 def curious_numbers():
-    factorials = [1,1] + [factorial(f) for f in range(2,10)] # caching factorials
+    factorials = [1, 1] + [factorial(f)
+                           for f in range(2, 10)]  # caching factorials
     upper_limit = 7*factorials[9]  # max 7 digits
-    for number in range(3, upper_limit):s
+    for number in range(3, upper_limit):
         digit_factorials = (factorials[d] for d in digits(number))
         if sum(digit_factorials) == number:
             yield number
