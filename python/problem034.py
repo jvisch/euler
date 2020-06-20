@@ -4,7 +4,7 @@ def factorial(value):
     return value * factorial(value-1)
 
 
-def digits(value):
+def to_digits(value):
     while value > 0:
         yield value % 10
         value = int(value / 10)
@@ -23,7 +23,7 @@ def curious_numbers():
                            for f in range(2, 10)]  # caching factorials
     upper_limit = 7*factorials[9]  # max 7 digits
     for number in range(3, upper_limit):
-        digit_factorials = (factorials[d] for d in digits(number))
+        digit_factorials = (factorials[d] for d in to_digits(number))
         if sum(digit_factorials) == number:
             yield number
 
