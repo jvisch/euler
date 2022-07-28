@@ -7,7 +7,6 @@ for number in range(0, 10**6):
         # is binary a palindrome?
         number_binary = f'{number:b}'
         if number_binary == number_binary[::-1]:
-            print(f'{number_decimal} -- {number_binary}')
             total += number
 
 print(total)
