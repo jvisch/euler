@@ -1,8 +1,13 @@
-def to_binary(value):
-    while value > 0:
-        yield value % 2
-        value = value // 2 # int divisor
+total = 0
 
-def is_palindrome(value):
-    return value == value[::-1]
+for number in range(0, 10**6):
+    number_decimal = str(number)
+    # is decimal palindrome?
+    if number_decimal == number_decimal[::-1]:
+        # is binary a palindrome?
+        number_binary = f'{number:b}'
+        if number_binary == number_binary[::-1]:
+            print(f'{number_decimal} -- {number_binary}')
+            total += number
 
+print(total)
