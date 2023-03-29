@@ -1,11 +1,17 @@
-## very, very, very, very slow
+# De kleinste reeks is
+#   1*getal = a
+#   2*getal = b
+#
+#   "ab" aan elkaar zijn max 9 digits, dus getal is max 4 digits
 
 def to_digits(value):
     digits = []
     while value > 0:
         digits.append(value % 10)
         value //= 10
-    return reversed(digits)
+    digits.reverse()
+    return digits
+
 
 def from_digits(digits):
     value = 0
@@ -13,11 +19,13 @@ def from_digits(digits):
         value = (value * 10) + d
     return value
 
+
 def unique_values(items):
     for i in range(len(items) - 1):
         if items[i] in items[i+1:]:
             return False
     return True
+
 
 def is_pandigital(value):
     if len(value) != 9:
@@ -28,34 +36,22 @@ def is_pandigital(value):
 
 
 def result():
-    value = 10000
-    value = 987654321
-
-    value //= 3
-
-    while value > 0:
-        if(value % 1000000 == 0):
-            print(value)
-        first = list(to_digits(1 * value)) 
-        second = list(to_digits(2 * value)) 
-        digits = first + second
-        # 0 may not occur
-        if not 0 in digits:
-            # all digits must be unique
-            if unique_values(digits):
-                b = 3
-                while(len(digits) < 9):
-                    p = b * value
-                    digits += list(to_digits(p))
-                    b += 1
-                # check if it's pandigital
-                if is_pandigital(digits):
-                    return value, digits
-        value -= 1
-
+    # max 4 digits
+    max = int(1e5)
+    # range loops to max-1
+    for getal in range(1, max):
+        digits = to_digits(getal) + to_digits(2*getal)
+        if len(digits) == 9:
+            if is_pandigital(digits):
+                yield from_digits(digits)
+            elif len(digits) < 9:
+                if not 0 in digits:
+                    for p in [3, 4]:
+                        digits += to_digits(p * getal)
+                        if is_pandigital(digits):
+                            yield from_digits(digits)
 
 
 if __name__ == '__main__':
-    value, digits = result()                
-    print(f"{value} : {digits}")
-    print(from_digits(digits))
+    for r in result():
+        print(r)
