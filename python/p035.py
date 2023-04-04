@@ -1,5 +1,5 @@
-from problem010 import primes2
-from problem034 import to_digits
+from p010 import primes2
+from p034 import to_digits
 from math import sqrt, log10
 
 MAX = 10**6
