@@ -15,9 +15,13 @@ def hexagonal(n):
     return (n * (2*n - 1))
 
 
-triangles = []
-pentagonals = []
-hexagonals = []
+import time
+
+start = time.time()
+
+triangles = set()
+pentagonals = set()
+hexagonals = set()
 
 n = 1
 
@@ -26,9 +30,9 @@ while True:
     p = pentagonal(n)
     h = hexagonal(n)
 
-    triangles.append(t)
-    pentagonals.append(p)
-    hexagonals.append(h)
+    triangles.add(t)
+    pentagonals.add(p)
+    hexagonals.add(h)
 
     if t > 40755: # from description of the problem
         if t in pentagonals and t in hexagonals:
@@ -37,3 +41,4 @@ while True:
     n += 1
 
 print('done')
+print(time.time() - start)
