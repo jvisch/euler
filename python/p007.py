@@ -1,8 +1,8 @@
-import p003
+from lib.primes import Primes
 
 
 def result(max=10001):
-    primes = p003.primes()
+    primes = Primes.primes()
     for _ in range(0, max):
         p = next(primes)
     return p

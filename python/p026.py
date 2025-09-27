@@ -2,7 +2,7 @@
 def divide(a, b):
     remainders = []
     result = a // b
-    fraction =  str(result)
+    fraction = str(result)
     remainder = a - (result * b)
     fraction += "."
     while remainder > 0 and remainder not in remainders:
@@ -16,7 +16,8 @@ def divide(a, b):
         idx = remainders.index(remainder)
     return a, b, fraction, remainders, idx, len(remainders)
 
-fractions = [divide(1,i) for i in range(1, 1000) ]
+
+fractions = [divide(1, i) for i in range(1, 1000)]
 
 longest = max(fractions, key=lambda item: item[-1]-item[-2])
 print(longest)

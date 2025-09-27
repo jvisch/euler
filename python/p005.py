@@ -3,6 +3,7 @@ import itertools
 import collections
 import operator
 import functools
+from lib.primes import Primes
 
 
 def result():
@@ -20,7 +21,7 @@ def allPrimeFactorsCount(max):
 
 
 def primeFactors(n):
-    primes = itertools.takewhile(lambda x: x <= n, p003.primes())
+    primes = itertools.takewhile(lambda x: x <= n, Primes.primes())
     for p in primes:
         while n % p == 0:
             yield p
@@ -32,4 +33,4 @@ def factorsCount(n):
 
 
 if __name__ == '__main__':
-	print(result())
+    print(result())

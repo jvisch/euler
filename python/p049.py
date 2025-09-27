@@ -1,10 +1,10 @@
-import p046
+from lib.primes import Primes
 import p041
 import itertools
 
 
 def primes():
-    primes = p046.Primes.primes()
+    primes = Primes.primes()
     p = next(primes)
     while p < 10000:
         if p > 1000:
@@ -28,7 +28,7 @@ VALUE = 3330
 # all primes + 3330 , + 2 x 3330
 result = [(p, p + VALUE, p + VALUE + VALUE) for p in primes()]
 # filter none primes
-result = ((p1, p2, p3) for p1, p2, p3 in result if p046.Primes.is_prime(p2) and p046.Primes.is_prime(p3))
+result = ((p1, p2, p3) for p1, p2, p3 in result if Primes.is_prime(p2) and Primes.is_prime(p3))
 # check for permutation
 result = (p for p in result if are_permutations(p))
 

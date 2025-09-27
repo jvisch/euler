@@ -21,26 +21,32 @@ text = "73167176531330624919225119674426574742355349194934"\
        "84580156166097919133875499200524063689912560717606"\
        "05886116467109405077541002256983155200055935729725"\
        "71636269561882670428252483600823257530420752963450"
-	   
+
+
 def getParts(length):
-	for i in range(0, len(text)-length+1):
-		yield text[i:i+length]
+    for i in range(0, len(text)-length+1):
+        yield text[i:i+length]
+
 
 def getInts(numbersAsText):
-	for c in numbersAsText :
-		yield int(c)
-		
+    for c in numbersAsText:
+        yield int(c)
+
+
 def getPartsProduct(numbersAsText):
-	for p in itertools.accumulate(getInts(numbersAsText), operator.mul):
-		pass
-	return p
-	
+    for p in itertools.accumulate(getInts(numbersAsText), operator.mul):
+        pass
+    return p
+
+
 def getProducts(lengthPart):
-	for p in getParts(lengthPart):
-		yield getPartsProduct(p)
-		
+    for p in getParts(lengthPart):
+        yield getPartsProduct(p)
+
+
 def result():
-	return max(getProducts(13))
+    return max(getProducts(13))
+
 
 if __name__ == '__main__':
     print(result())

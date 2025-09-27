@@ -1,4 +1,4 @@
-from p046 import Primes
+from lib.primes import Primes
 
 x = []
 
@@ -19,7 +19,7 @@ for start in range(len(x)):
         if end - start > len(result):
             y = x[start:end]
             s = sum(y)
-            if s < m and Primes.is_prime(sum(y)):
+            if s < m and Primes.is_prime(s):
                 print(y)
                 result = y
 

@@ -6,7 +6,7 @@ MOVE_LEFT = 3
 MOVE_TOP = 4
 
 
-matrix = [ [-1 for i in range(width)] for i in range(width)]
+matrix = [[-1 for i in range(width)] for i in range(width)]
 
 row = col = width // 2
 move = MOVE_RIGHT
@@ -24,7 +24,7 @@ for cell in range(1, width*width + 1):
             move = MOVE_LEFT
             col -= 1
         else:
-            row +=1
+            row += 1
     elif move == MOVE_LEFT:
         if matrix[row-1][col] == -1:
             move = MOVE_TOP
@@ -47,4 +47,4 @@ for col in range(width):
     row += 1
 total -= matrix[width//2][col//2]
 
-print (total)
+print(total)

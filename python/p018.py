@@ -1,8 +1,8 @@
-#sourceText = """\
-#3
-#7 4
-#2 4 6
-#8 5 9 3"""
+# sourceText = """\
+# 3
+# 7 4
+# 2 4 6
+# 8 5 9 3"""
 
 sourceText = """\
 75
@@ -23,15 +23,16 @@ sourceText = """\
 
 
 def result():
-	triangle = [ [int(c) for c in line.split()] for line in sourceText.splitlines()]
-	result = triangle.pop()
-	while len(triangle) > 0:
-		result = addLines( triangle.pop(), result)
-	return result[0]
-	
+    triangle = [[int(c) for c in line.split()]
+                for line in sourceText.splitlines()]
+    result = triangle.pop()
+    while len(triangle) > 0:
+        result = addLines(triangle.pop(), result)
+    return result[0]
+
 
 def addLines(rowA, rowB):
-	r = []
-	for i in range(len(rowA)):
-		r.append( rowA[i] + max(rowB[i], rowB[i+1]))
-	return r
+    r = []
+    for i in range(len(rowA)):
+        r.append(rowA[i] + max(rowB[i], rowB[i+1]))
+    return r

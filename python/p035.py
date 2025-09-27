@@ -1,35 +1,28 @@
-from p010 import primes2
-from p034 import to_digits
-from math import sqrt, log10
-
-MAX = 10**6
-primes = set(p for p in primes2(MAX))
+from lib.primes import Primes
+from lib.numbers import to_digits, from_digits
+import collections
+import itertools
 
 
-def is_prime(value):
-    return value in primes
+def circulars(value):
+    digits = collections.deque(to_digits(value))
+    yield value
+    for _ in range(1, len(digits)):
+        digits.rotate(1)
+        yield from_digits(digits)
 
+def is_circular_prime(prime):
+    return all( Primes.is_prime(c) for c in circulars(prime))
 
-def to_number(digits):
-    result = 0
-    factor = 1
-    for i in digits:
-        result = result + i * factor
-        factor = factor * 10
-    return result
+def circular_primes(m):
+    primes = itertools.takewhile(lambda p: p < m, Primes.primes())
+    # primes = list(primes)
+    # print(primes)
 
+    # for p in primes:
+    #     if all((Primes.is_prime(v) for v in circulars(p))):
+    #         yield p
+    return (p for p in primes if is_circular_prime(p))
 
-def get_circulars(value):
-    nr_of_digits = int(log10(value))
-    for _ in range(0, nr_of_digits+1):
-        yield value
-        value = int(value / 10) + ((value % 10) * 10**nr_of_digits)
-
-
-def is_circular_prime(value):
-    return all(is_prime(v) for v in get_circulars(value))
-
-
-if __name__ == "__main__":
-    result = [p for p in primes if is_circular_prime(p)]
-    print("answer: {}".format(len(result)))
+x = list( circular_primes(100) )
+print(x)

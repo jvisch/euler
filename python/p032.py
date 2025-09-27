@@ -21,4 +21,5 @@ def solve():
                 result.add(product)
     return sum(result)
 
+
 print(solve())

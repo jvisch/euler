@@ -1,32 +1,8 @@
+from lib.primes import Primes
 import p046
 
-
-# def is_consecutive(values):
-#     values = list(values)
-#     if len(values) <= 1:
-#         return True
-#     else:
-#         if values[1] - values[0] == 1:
-#             return is_consecutive(values[1:])
-#         else:
-#             return False
-
-# numbers = 3 * (None,)
-
-# for i in p046.numbers(2, 1000):
-#     c = (i, p046.check(i))
-#     numbers = numbers[1:] + (c,)
-#     if not None in numbers:
-#         values = (i for i, c in numbers)
-#         primes = (c for i, c in numbers if c is not None)
-#         unique_primes = {prime for prime, _ in primes}
-#         if len(unique_primes) == len(numbers):
-#             if is_consecutive(values):
-#                 # found it
-#                 print(numbers)
-
 def prime_factors(number):
-    prime = p046.Primes.primes()
+    prime = Primes.primes()
     p = next(prime)
     while number != 1:
         if number % p == 0:
@@ -34,6 +10,7 @@ def prime_factors(number):
             number = number // p
         else:
             p = next(prime)
+
 
 def uniques(items):
     u = []
@@ -55,6 +32,7 @@ def result(length=4):
                 return found
         else:
             found.clear()
+
 
 if __name__ == '__main__':
     print(result())
