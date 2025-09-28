@@ -4,20 +4,7 @@
 #
 #   "ab" aan elkaar zijn max 9 digits, dus getal is max 4 digits
 
-def to_digits(value):
-    digits = []
-    while value > 0:
-        digits.append(value % 10)
-        value //= 10
-    digits.reverse()
-    return digits
-
-
-def from_digits(digits):
-    value = 0
-    for d in digits:
-        value = (value * 10) + d
-    return value
+from lib.numbers import from_digits, to_digits
 
 
 def unique_values(items):

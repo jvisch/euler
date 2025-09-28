@@ -1,5 +1,8 @@
+import os, pathlib
+
 def words():
-    with open("p042_words.txt") as f:
+    p = pathlib.Path(os.path.dirname(__file__)) / "p042_words.txt"
+    with open(p) as f:
         all_words = f.read()
     for w in all_words.split(','):
         yield w[1:-1]

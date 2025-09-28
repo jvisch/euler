@@ -1,4 +1,11 @@
 
+def numbers(start=1):
+    n = start
+    while True:
+        yield n
+        n += 1
+
+
 def fibonacci():
     a, b = 1, 2
     yield a
@@ -14,7 +21,8 @@ def to_digits(value):
         d = value % 10
         digits.insert(0, d)
         value //= 10
-    return digits   
+    return digits
+
 
 def from_digits(digits):
     result = 0

@@ -1,13 +1,7 @@
 import itertools
 import math
-
-
-def is_prime(n):
-    for i in range(2, int(math.sqrt(n)) + 1):
-        if n % i == 0:
-            return False
-    return True
-
+from lib.numbers import to_digits, from_digits
+from lib.primes import Primes
 
 def is_pandigital(value):
     digits = sorted(value)
@@ -17,22 +11,6 @@ def is_pandigital(value):
         if b-a > 1:
             return False
     return True
-
-
-def to_digits(value):  # copied from problem 38
-    digits = []
-    while value > 0:
-        digits.append(value % 10)
-        value //= 10
-    digits.reverse()
-    return digits
-
-
-def from_digits(digits):  # copied from problem 38
-    value = 0
-    for d in digits:
-        value = (value * 10) + d
-    return value
 
 
 def pandigital_numbers():
@@ -49,7 +27,7 @@ def pandigital_prime_numbers():
     pandigitals = sorted(pandigital_numbers())
 
     for n in pandigitals:
-        if is_prime(n):
+        if Primes.is_prime(n):
             yield n
 
 

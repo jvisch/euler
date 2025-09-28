@@ -11,18 +11,22 @@ def circulars(value):
         digits.rotate(1)
         yield from_digits(digits)
 
+
 def is_circular_prime(prime):
-    return all( Primes.is_prime(c) for c in circulars(prime))
+    # return all(Primes.is_prime(c) for c in circulars(prime))
+    for c in circulars(prime):
+        if not Primes.is_prime(c):
+            return False
+    return True
+
 
 def circular_primes(m):
     primes = itertools.takewhile(lambda p: p < m, Primes.primes())
-    # primes = list(primes)
-    # print(primes)
+    primes = list(primes)
 
-    # for p in primes:
-    #     if all((Primes.is_prime(v) for v in circulars(p))):
-    #         yield p
     return (p for p in primes if is_circular_prime(p))
 
-x = list( circular_primes(100) )
+
+x = list(circular_primes(1_000_000))
 print(x)
+print(len(x))
