@@ -1,6 +1,5 @@
 from lib.primes import Primes
-import p041
-import itertools
+from lib.numbers import to_digits, from_digits
 
 
 def primes():
@@ -16,9 +15,9 @@ def primes():
 def are_permutations(numbers):
     iter_numbers = iter(numbers)
     first = next(iter_numbers)
-    key = sorted(p041.to_digits(first))
+    key = sorted(to_digits(first))
     for i in iter_numbers:
-        if not key == sorted(p041.to_digits(i)):
+        if not key == sorted(to_digits(i)):
             return False
     # All checks true
     return True
@@ -36,6 +35,6 @@ result = (p for p in result if are_permutations(p))
 
 for r in result:
     print(r)
-    all_digits = [d for n in r for d in p041.to_digits(n)]
-    the_real_result = p041.from_digits(all_digits)
+    all_digits = [d for n in r for d in to_digits(n)]
+    the_real_result = from_digits(all_digits)
     print(the_real_result)
