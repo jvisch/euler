@@ -3,19 +3,20 @@
 # Hexagonal 	Hn=n(2n−1) 	  	1, 6, 15, 28, 45, ...
 
 
-def triangle(n):
-    return (n * (n + 1)) // 2
-
-
-def pentagonal(n):
-    return (n * (3*n - 1)) // 2
-
-
-def hexagonal(n):
-    return (n * (2*n - 1))
-
-
 import time
+
+
+def triangle(value):
+    return (value * (value + 1)) // 2
+
+
+def pentagonal(value):
+    return (value * (3*value - 1)) // 2
+
+
+def hexagonal(value):
+    return value * (2*value - 1)
+
 
 start = time.time()
 
@@ -34,7 +35,7 @@ while True:
     pentagonals.add(p)
     hexagonals.add(h)
 
-    if t > 40755: # from description of the problem
+    if t > 40755:  # from description of the problem
         if t in pentagonals and t in hexagonals:
             print(t)
             break

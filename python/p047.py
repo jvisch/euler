@@ -1,5 +1,6 @@
 from lib.primes import Primes
-import p046
+from lib.numbers import numbers
+
 
 def prime_factors(number):
     prime = Primes.primes()
@@ -22,7 +23,7 @@ def uniques(items):
 
 def result(length=4):
     found = []
-    for n in p046.numbers(start=2):
+    for n in numbers(start=2):
         print(n)
         f = prime_factors(n)
         f = uniques(f)

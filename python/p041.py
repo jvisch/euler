@@ -14,7 +14,7 @@ def is_pandigital(value):
 
 
 def pandigital_numbers():
-    digits = to_digits(123456789)
+    digits = to_digits(987654321)
     for n in range(1, 9):
         for g in itertools.permutations(digits[:-n]):
             # deelbaar door 2 of door 5?

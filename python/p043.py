@@ -1,20 +1,5 @@
 import itertools
-
-
-def to_digits(value):  # copied from problem 38
-    digits = []
-    while value > 0:
-        digits.append(value % 10)
-        value //= 10
-    digits.reverse()
-    return digits
-
-
-def from_digits(digits):  # copied from problem 38
-    value = 0
-    for d in digits:
-        value = (value * 10) + d
-    return value
+from lib.numbers import to_digits, from_digits
 
 
 def pandigitals():
@@ -50,7 +35,7 @@ def check(digits):
     # d6d7d8 deelbaar door 11
     p = next(parts)
     if not from_digits(p) % 11 == 0:
-        return False 
+        return False
     # d7d8d9 deelbaar door 13
     p = next(parts)
     if not from_digits(p) % 13 == 0:
@@ -62,6 +47,7 @@ def check(digits):
     # done
     return True
 
+
 def result():
     total = 0
     for digits in pandigitals():
@@ -70,6 +56,7 @@ def result():
             print(number)
             total += number
     print(total)
+
 
 if __name__ == '__main__':
     result()
